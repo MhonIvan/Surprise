@@ -1,0 +1,65 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>A little surprise</title>
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Manrope:wght@600;700;800&display=swap" rel="stylesheet">
+	<link rel="stylesheet" href="style.css">
+</head>
+<body>
+	<main class="page-shell">
+		<section class="mail-box" aria-label="A private message">
+			<div class="mail-stage">
+				<div class="envelope" id="envelope" aria-label="Closed mail">
+					<div class="envelope-back"></div>
+					<div class="letter" id="letter" aria-hidden="true">
+						<div class="letter-copy">
+							<p>Hey Rosa Camilla Lamamigo 
+                              </p>
+							<p>Proud ako sau day sana maabot mo pangarap mo sa buhay sana yumaman ka na para ma apak apakan mo na kaming lahat.
+                           </p>
+                           <p>
+                            Siryus na 2. Uhm, live your life to the fullest and enjoy every moment of it, ’cause you deserve it. Punta na ikaw kila Yana, Lyza, and Aiko. Go, girls! Do whatever you want to do that makes you happy, but also don’t forget to enjoy and spend time with your family, ’cause FAMILY IS LOVE. ❤️
+                            </p>
+                            <p>
+                                That’s all, pretty. Hope you like this little surprise from me to you. 🎓❤️
+                            </p>
+						</div>
+						<span class="letter-fade"></span>
+					</div>
+					<div class="envelope-front"></div>
+					<div class="envelope-flap"></div>
+					<div class="envelope-stamp">♡</div>
+				</div>
+			</div>
+
+			<div class="mail-controls" role="group" aria-label="Mail controls">
+				<button class="mail-button" id="openButton" type="button">Open</button>
+				<button class="mail-button close-button" id="closeButton" type="button">Close</button>
+			</div>
+		</section>
+	</main>
+
+	<script>
+		const envelope = document.querySelector('#envelope');
+		const letter = document.querySelector('#letter');
+		const openButton = document.querySelector('#openButton');
+		const closeButton = document.querySelector('#closeButton');
+
+		function setMailState(isOpen) {
+			envelope.classList.toggle('is-open', isOpen);
+			envelope.setAttribute('aria-label', isOpen ? 'Open mail' : 'Closed mail');
+			letter.setAttribute('aria-hidden', String(!isOpen));
+			openButton.disabled = isOpen;
+			closeButton.disabled = !isOpen;
+		}
+
+		openButton.addEventListener('click', () => setMailState(true));
+		closeButton.addEventListener('click', () => setMailState(false));
+		setMailState(false);
+	</script>
+</body>
+</html>
